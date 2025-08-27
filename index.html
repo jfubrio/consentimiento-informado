@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consentimiento Informado</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <form id="consent-form">
+      <h2>Consentimiento Informado</h2>
+      
+      <div class="form-group">
+        <label for="patientName">Nombre del Paciente:</label>
+        <input type="text" id="patientName" required>
+      </div>
+
+      <div class="form-group">
+        <label for="procedureName">Procedimiento:</label>
+        <select id="procedureName" required>
+          <option value="">Seleccione...</option>
+          <option value="Botox">Botox</option>
+          <option value="Sculptra">Sculptra</option>
+          <option value="Radiesse">Radiesse</option>
+          <option value="HIFU">HIFU</option>
+          <option value="Facial">Facial</option>
+          <option value="AcidoHialuronico">Ácido Hialurónico</option>
+          <option value="DepilacionLaser">Depilación Láser</option>
+          <option value="AparatologiaCorporal">Tratamientos Corporales con Aparatología</option>
+        </select>
+        
+      </div>
+
+      <div class="form-group">
+        <p class="date-display">Fecha: <span id="currentDate"></span></p>
+        <input type="hidden" id="consentDate">
+        <input type="hidden" id="doctorName" value="Dr. Nombre Predeterminado">
+        <input type="hidden" id="doctorLicense" value="1234567">
+      </div>
+
+      <div id="infoProcedimiento" class="procedure-info hidden"></div>
+
+      <div class="form-group">
+        <label id="risksLabel" class="checkbox-label hidden">
+          <input type="checkbox" id="acceptRisks"> 
+          <span class="checkmark"></span>
+          He leído y acepto los riesgos, beneficios y alternativas.
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label class="section-label">¿Autorizo el uso de imágenes para fines educativos y de marketing?</label>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="acceptImages" value="yes"> 
+            <span class="radio-mark"></span>
+            Sí
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="acceptImages" value="no" checked> 
+            <span class="radio-mark"></span>
+            No
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="acceptPrivacy" required> 
+          <span class="checkmark"></span>
+          Acepto el Aviso de Privacidad.
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label class="section-label">Firma del Paciente:</label>
+        <div class="signature-container">
+          <canvas id="signature-pad" width="600" height="200"></canvas>
+          <div class="signature-instructions">Firme en el área de arriba</div>
+        </div>
+        <button type="button" id="clearSignature" class="btn-secondary">Borrar Firma</button>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">Generar PDF</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- External Library Dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- Custom JavaScript -->
+  <script src="main.js"></script>
+</body>
+</html>
